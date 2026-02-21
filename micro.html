@@ -19,36 +19,75 @@
         </div>
       </div>
       <p class="sub">
-        A running log. Add new entries at the top. Short, dated, practical.
+        A running log. Add new entries at the top. Short. Dated automatically.
       </p>
     </header>
 
     <section class="feed">
-      <pre id="log">
-2026-02-20 — Hmmz.
-2026-02-20 — Testing
-2026-02-20 — Lab site is live. Goal: low-friction notes that stay off the parent-facing site.
-2026-02-20 — If the page looks "old", it's probably browser cache.
 
-      </pre>
+      <!--
+        HOW TO POST:
+
+        Add new lines at the TOP of log-data below.
+
+        You can write:
+          Just text → auto-adds today's date
+          OR
+          2026-02-20 — Your text → uses your manual date
+      -->
+
+      <div id="log-data" style="display:none;">
+New idea about lesson structure.
+If the page looks "old", it's probably browser cache.
+2026-02-20 — Lab site is live. Goal: low-friction notes that stay off the parent-facing site.
+      </div>
+
+      <div id="feed-output"></div>
+
     </section>
 
   </main>
 
 <script>
-const log = document.getElementById("log");
-const lines = log.innerText.trim().split("\n").reverse();
+function todayISO() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
 
-log.innerHTML = lines.map(line => {
-  const parts = line.split("—");
-  if (parts.length < 2) return "";
+const rawLines = document
+  .getElementById("log-data")
+  .innerText
+  .split("\n")
+  .map(line => line.trim())
+  .filter(Boolean);
+
+const today = todayISO();
+
+const rendered = rawLines.map(line => {
+  if (line.includes("—")) {
+    const parts = line.split("—");
+    const date = parts[0].trim();
+    const text = parts.slice(1).join("—").trim();
+    return `
+      <div class="entry">
+        <div class="meta">${date}</div>
+        <div class="text">${text}</div>
+      </div>
+    `;
+  }
+
   return `
     <div class="entry">
-      <div class="meta">${parts[0].trim()}</div>
-      <div class="text">${parts.slice(1).join("—").trim()}</div>
+      <div class="meta">${today}</div>
+      <div class="text">${line}</div>
     </div>
   `;
 }).join("");
+
+document.getElementById("feed-output").innerHTML = rendered;
 </script>
 
 </body>
