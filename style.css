@@ -1,66 +1,145 @@
+/* Smooth, clean, ChatGPT-ish minimal UI (text-only) */
+
 :root{
-  --bg:#0b0c0f;
-  --card:#11131a;
-  --text:#e9eaf0;
-  --muted:#a7adbb;
-  --line:#23283a;
-  --link:#cfe1ff;
+  --bg: #0b0f14;
+  --panel: #0f1720;
+  --panel2:#0c141d;
+  --text: #e7eef7;
+  --muted:#a8b3c2;
+  --line: rgba(255,255,255,0.08);
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+
 body{
   margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font:16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: radial-gradient(1200px 800px at 30% -10%, rgba(255,255,255,0.06), transparent 55%),
+              radial-gradient(900px 600px at 90% 0%, rgba(255,255,255,0.04), transparent 60%),
+              var(--bg);
+  color: var(--text);
+  font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.wrap{
-  max-width: 760px;
+.page{
+  max-width: 820px;
   margin: 0 auto;
-  padding: 56px 18px 64px;
+  padding: 52px 18px 64px;
 }
 
-.top h1{
-  margin:0 0 8px;
-  font-size: 34px;
+.header{
+  margin-bottom: 18px;
+}
+
+.brand{
+  display:flex;
+  align-items:flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.dot{
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid var(--line);
+  margin-top: 8px;
+}
+
+.kicker{
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+h1{
+  margin:0;
+  font-size: 38px;
+  line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
-.tagline{
-  margin:0 0 22px;
-  color:var(--muted);
+.sub{
+  margin: 10px 0 0;
+  color: var(--muted);
+  max-width: 68ch;
+}
+
+.stack{
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
 }
 
 .card{
-  border:1px solid var(--line);
-  background:var(--card);
-  border-radius:16px;
-  padding:18px 18px 16px;
-  margin:14px 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  box-shadow: var(--shadow);
 }
 
-.card h2{
-  margin:0 0 10px;
-  font-size: 18px;
+.card.subtle{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+}
+
+h2{
+  margin: 0 0 10px;
+  font-size: 17px;
   letter-spacing: -0.01em;
 }
 
-ul{margin:0; padding-left: 18px}
-li{margin: 8px 0}
-
-a{
-  color:var(--link);
-  text-decoration: none;
+p{
+  margin: 0;
+  color: var(--text);
 }
-a:hover{ text-decoration: underline }
 
-.muted{ color:var(--muted) }
+ul{
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text);
+}
 
-.foot{
-  margin-top: 22px;
-  padding-top: 10px;
+li{
+  margin: 8px 0;
+  color: var(--text);
+}
+
+.footer{
+  margin-top: 20px;
+  padding-top: 14px;
   border-top: 1px solid var(--line);
 }
-.foot p{ margin: 8px 0 }
+
+.fine{
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f6f7fb;
+    --text:#0b0f14;
+    --muted:#4c596b;
+    --line: rgba(0,0,0,0.10);
+    --shadow: 0 10px 24px rgba(0,0,0,0.10);
+  }
+  body{
+    background: radial-gradient(1200px 800px at 30% -10%, rgba(0,0,0,0.06), transparent 55%),
+                radial-gradient(900px 600px at 90% 0%, rgba(0,0,0,0.04), transparent 60%),
+                var(--bg);
+  }
+  .card{
+    background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.015));
+  }
+  .card.subtle{
+    background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+  }
+}
