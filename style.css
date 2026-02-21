@@ -1,11 +1,11 @@
-/* ===== ChessPanda Lab — Micro (Clean cards, normal font, no overflow) ===== */
+/* ===== ChessPanda Lab — Micro (White, clean, no monospace, no overflow) ===== */
 
 :root{
-  --bg:#fff;
-  --card:#fff;
-  --text:#111;
+  --bg:#ffffff;
+  --text:#111111;
   --muted:#6b7280;
   --line:#e5e7eb;
+  --card:#ffffff;
 }
 
 *{ box-sizing:border-box; }
@@ -76,20 +76,20 @@ h1{
   margin: 14px 0;
 }
 
-/* Date */
+/* Date row */
 .meta{
   font-size: 12.5px;
   color: var(--muted);
   margin-bottom: 10px;
 }
 
-/* Body text */
+/* Text */
 .text{
-  font-family: inherit;          /* kills monospace */
+  font-family: inherit;
   font-size: 16px;
   line-height: 1.65;
-  white-space: normal;           /* ensure normal wrapping */
-  overflow-wrap: anywhere;       /* fixes “won’t fit” */
+  white-space: normal;
+  overflow-wrap: anywhere;
   word-break: break-word;
 }
 
