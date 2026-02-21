@@ -122,3 +122,40 @@ li{
   color: var(--muted);
   font-size: 13px;
 }
+/* Micro feed */
+
+.feed{
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.entry{
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: #fff;
+}
+
+.meta{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.sep{ opacity: 0.6; }
+
+.tag{
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 8px;
+  background: #fafafa;
+}
+
+.text{
+  color: var(--text);
+  white-space: pre-wrap;
+}
