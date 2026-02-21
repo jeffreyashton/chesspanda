@@ -1,99 +1,103 @@
-/* ===== ChessPanda Lab — Micro Feed (Card Style) ===== */
+/* ===== ChessPanda Lab — Micro (Clean cards, normal font, no overflow) ===== */
 
-:root {
-  --bg: #ffffff;
-  --text: #111111;
-  --muted: #6b7280;
-  --line: #e5e7eb;
+:root{
+  --bg:#fff;
+  --card:#fff;
+  --text:#111;
+  --muted:#6b7280;
+  --line:#e5e7eb;
 }
 
-* {
-  box-sizing: border-box;
+*{ box-sizing:border-box; }
+
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+               Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  font-size:16px;
+  line-height:1.6;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-               Roboto, Helvetica, Arial, sans-serif;
-}
-
-.page {
-  max-width: 680px;
+.page{
+  max-width: 720px;
   margin: 0 auto;
-  padding: 48px 20px 80px;
+  padding: 44px 18px 80px;
 }
 
-/* ===== Header ===== */
+/* Header */
+.header{ margin-bottom: 22px; }
 
-.header {
-  margin-bottom: 28px;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.dot{
+  width:8px;
+  height:8px;
+  background:#111;
+  border-radius:999px;
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  background: #111;
-  border-radius: 50%;
+.kicker{
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
 }
 
-.kicker {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-h1 {
-  font-size: 34px;
+h1{
   margin: 6px 0 0;
-  font-weight: 600;
+  font-size: 36px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 650;
 }
 
-.sub {
-  margin-top: 12px;
-  font-size: 14px;
-  color: var(--muted);
+.sub{
+  margin: 12px 0 0;
+  color:var(--muted);
+  font-size:14px;
+  max-width: 65ch;
 }
 
-/* ===== Feed ===== */
+/* Feed */
+.feed{ margin-top: 26px; }
 
-.feed {
-  margin-top: 30px;
+.entry{
+  border:1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+  padding: 16px 18px;
+  margin: 14px 0;
 }
 
-.entry {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 18px 20px;
-  margin-bottom: 18px;
-  background: #ffffff;
-}
-
-.meta {
-  font-size: 13px;
+/* Date */
+.meta{
+  font-size: 12.5px;
   color: var(--muted);
   margin-bottom: 10px;
-  letter-spacing: 0.02em;
 }
 
-.text {
+/* Body text */
+.text{
+  font-family: inherit;          /* kills monospace */
   font-size: 16px;
   line-height: 1.65;
+  white-space: normal;           /* ensure normal wrapping */
+  overflow-wrap: anywhere;       /* fixes “won’t fit” */
+  word-break: break-word;
 }
 
-/* ===== Footer ===== */
-
-.footer {
-  margin-top: 40px;
-  font-size: 12px;
-  color: var(--muted);
+/* Footer */
+.footer{
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:12px;
 }
